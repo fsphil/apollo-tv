@@ -1,0 +1,36 @@
+
+Apollo Unified S-Band TV Viewer
+
+SUPPORTS
+
+Both mono and colour Apollo video standards.
+Decode from file or in real time with an rtlsdr receiver.
+
+The file format is expected to be int16_t IQ samples
+representing an FM modulated signal, with 125kHz deviation.
+
+Audio is not yet supported.
+
+Press F key to toggle fullscreen.
+
+For best results in colour mode, use a sample rate with a
+multiple of 2250000 Hz. For the rtlsdr, this is the best
+sample rate to use.
+
+REQUIREMENTS
+
+* For Fedora
+yum install rtl-sdr-devel SDL2-devel
+
+INSTALL
+
+make
+make install
+
+TODO
+
+Add audio support.
+Improve SDR hardware support.
+
+- Philip Heron <phil@sanslogic.co.uk>
+
