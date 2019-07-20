@@ -442,7 +442,7 @@ int main(int argc, char *argv[])
 	int16_t buf[1024 * 2];
 	
 	opterr = 0;
-	while((c = getopt_long(argc, argv, "m:d:s:f:t:FO", long_options, &option_index)) != -1)
+	while((c = getopt_long(argc, argv, "m:d:s:f:p:t:FO", long_options, &option_index)) != -1)
 	{
 		switch(c)
 		{
