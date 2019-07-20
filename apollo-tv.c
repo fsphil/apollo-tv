@@ -102,7 +102,7 @@ int _usbtv_init(_usbtv_t *s, uint32_t sample_rate, int colour)
 		s->vsync_width  = round(s->sample_rate * 0.00002710); /* 27.10 µs */
 		
 		s->active_left  = round(s->sample_rate * 0.00000920); /* |-->| 9.20µs */
-		s->active_width = round(s->sample_rate * 0.00005290); /* 52.90µs */
+		s->active_width = ceil(s->sample_rate *  0.00005290); /* 52.90µs */
 		
 		s->fsc_left  = round(s->sample_rate * 0.00001470); /* |-->| 14.70µs */
 		s->fsc_width = round(s->sample_rate * 0.00002000); /* 20.00µs */
@@ -119,10 +119,15 @@ int _usbtv_init(_usbtv_t *s, uint32_t sample_rate, int colour)
 		s->vsync_width  = round(s->sample_rate * 0.00026750); /* 267.5µs */
 		
 		s->active_left  = round(s->sample_rate * 0.00002500); /* |-->| 25.0µs */
-		s->active_width = round(s->sample_rate * 0.00028250); /* 282.5µs */
+		s->active_width = ceil(s->sample_rate * 0.00028250); /* 282.5µs */
 	}
 	
 	s->width = round((double) s->sample_rate / s->lines / ((double) s->frame_rate_num / s->frame_rate_den));
+	
+	if(s->active_width > s->width)
+	{
+		s->active_width = s->width;
+	}
 	
 	s->iline_len = 0;
 	s->iline = malloc(s->width * sizeof(int16_t));
