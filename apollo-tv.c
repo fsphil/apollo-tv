@@ -421,7 +421,7 @@ int main(int argc, char *argv[])
 	int option_index;
 	char *device = NULL;
 	uint32_t sample_rate = 2250000;
-	uint32_t deviation = 125000;
+	float deviation = 125000;
 	uint32_t frequency = 855250000;
 	int error_ppm = 0;
 	static struct option long_options[] = {
@@ -429,6 +429,7 @@ int main(int argc, char *argv[])
 		{ "device",     required_argument, 0, 'd' },
 		{ "samplerate", required_argument, 0, 's' },
 		{ "frequency",  required_argument, 0, 'f' },
+		{ "deviation",  required_argument, 0, 'D' },
 		{ "ppm",        required_argument, 0, 'p' },
 		{ "type",       required_argument, 0, 't' },
 		{ "fullscreen", no_argument,       0, 'F' },
@@ -447,7 +448,7 @@ int main(int argc, char *argv[])
 	int16_t buf[1024 * 2];
 	
 	opterr = 0;
-	while((c = getopt_long(argc, argv, "m:d:s:f:p:t:FO", long_options, &option_index)) != -1)
+	while((c = getopt_long(argc, argv, "m:d:s:f:D:p:t:FO", long_options, &option_index)) != -1)
 	{
 		switch(c)
 		{
@@ -480,6 +481,10 @@ int main(int argc, char *argv[])
 		
 		case 'f': /* -f, --frequency <value> */
 			frequency = atol(optarg);
+			break;
+		
+		case 'D': /* -D, --deviation <value> */
+			deviation = atof(optarg);
 			break;
 		
 		case 'p': /* -p, --ppm <error PPM> */
