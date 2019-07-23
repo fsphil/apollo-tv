@@ -7,7 +7,7 @@ Both mono and colour Apollo video standards.
 Decode from file or in real time with an rtlsdr receiver.
 
 The file format is expected to be int16_t IQ samples
-representing an FM modulated signal, with 125kHz deviation.
+representing an FM modulated signal.
 
 Audio is not yet supported.
 
@@ -26,6 +26,18 @@ INSTALL
 
 make
 make install
+
+EXAMPLE
+
+For the field-sequential colour mode:
+
+TX: $ hacktv -f 855250000 -g 47 -m apollo-fsc-fm -s 2250000 --deviation 125000 --noaudio test
+RX: $ apollo-tv -d rtlsdr -f 855250000 -m colour --deviation 125000
+
+For the 10fps mono mode:
+
+TX: $ hacktv -f 855250000 -g 47 -m apollo-fm -s 2250000 --deviation 125000 --noaudio test
+RX: $ apollo-tv -d rtlsdr -f 855250000 -m mono --deviation 125000
 
 TODO
 
