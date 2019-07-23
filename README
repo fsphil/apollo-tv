@@ -43,6 +43,7 @@ TODO
 
 Add audio support.
 Improve SDR hardware support.
+Optimise the FM demodulation.
 
 - Philip Heron <phil@sanslogic.co.uk>
 
