@@ -227,7 +227,7 @@ int _usbtv_read(_usbtv_t *s)
 		}
 	}
 	
-	ref = mx - s->hsync_width;
+	ref = mx - s->hsync_width + 1;
 	if(ref < -s->width / 2) ref += s->width;
 	if(ref >= s->width / 2) ref -= s->width;
 	
